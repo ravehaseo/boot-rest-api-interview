@@ -114,8 +114,4 @@ public class LibrarianController {
 	}
 	
 	
-	@GetMapping("/admin")
-	public String adminAccess() {
-		return "Admin Board.";
-	}
 }

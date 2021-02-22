@@ -180,33 +180,6 @@ public class UserController {
 		
 	}
 	
-	@GetMapping("/admin")
-	@PreAuthorize("hasRole('LIBRARIAN')")
-	public String adminAccess() {
-		return "Admin Board.";
-	}
 	
-    @PreAuthorize("hasRole('LIBRARIAN')")
-    @RequestMapping(value="/adminping", method = RequestMethod.GET)
-    public String adminPing(HttpServletRequest request){
-    	
-    	String token = request.getHeader("Authorization");
-		
-    	System.out.println(request);
-		System.out.println(token);
-		if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
-			token=  token.substring(7, token.length());
-		}
-		
-		String sessionUsername = jwtTokenUtil.getUserNameFromJwtToken(token);
-        return "Only Admins Can Read This";
-    }
-    
-    
-    @PreAuthorize("hasRole('USER')")
-    @RequestMapping(value="/userping", method = RequestMethod.GET)
-    public String userPing(){
-        return "Any User Can Read This";
-    }
 
 }
